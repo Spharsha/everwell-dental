@@ -157,7 +157,7 @@ export default function Home() {
             </div>
 
             <div className="order-1 md:order-2">
-              <p className="text-xs font-bold tracking-[0.25em] text-teal">
+              <p className="text-xs font-bold tracking-[0.25em] text-deep">
                 YOUR COMFORT FIRST
               </p>
               <h2 className="mt-3 font-display text-4xl font-semibold leading-tight sm:text-5xl">

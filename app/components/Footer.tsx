@@ -13,7 +13,7 @@ export default function Footer() {
             <p className="mt-1 text-[10px] tracking-[0.25em] text-mint/70">
               DENTAL STUDIO · HYDERABAD
             </p>
-            <p className="mt-5 max-w-xs text-sm leading-7 text-white/65">
+            <p className="mt-5 max-w-xs text-sm leading-7 text-white">
               Gentle, modern dental care for the whole family.
             </p>
           </div>
@@ -22,7 +22,7 @@ export default function Footer() {
             <h3 className="mb-4 text-xs font-bold tracking-[0.2em] text-mint">
               EXPLORE
             </h3>
-            <div className="flex flex-col gap-3 text-sm text-white/70">
+            <div className="flex flex-col gap-3 text-sm text-white">
               <Link href="/treatments" className="transition hover:text-white">
                 Treatments
               </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between gap-3 pt-8 text-xs text-white/50 md:flex-row">
+        <div className="flex flex-col justify-between gap-3 pt-8 text-xs text-white md:flex-row">
           <p>© 2026 Everwell Dental Studio. All rights reserved.</p>
           <p className="text-mint">
             Demo website · Sample content · A website demo by Vebnora
@@ -93,3 +93,4 @@ export default function Footer() {
     </footer>
   );
 }
+
