@@ -1,291 +1,235 @@
+import Link from "next/link";
 import Header from "./components/Header";
-import ContactForm from "./components/ContactForm";
+import Footer from "./components/Footer";
+import SoftImage from "./components/SoftImage";
+import { doctors, photo, steps, treatments } from "./data";
 
-const treatments = [
-  {
-    number: "01",
-    title: "General Dentistry",
-    description:
-      "Complete dental care, regular checkups and preventive treatments for healthy smiles.",
-  },
-  {
-    number: "02",
-    title: "Cosmetic Dentistry",
-    description:
-      "Thoughtful smile enhancements designed around your individual needs.",
-  },
-  {
-    number: "03",
-    title: "Dental Implants",
-    description:
-      "Modern tooth replacement options with personalised treatment planning.",
-  },
-  {
-    number: "04",
-    title: "Teeth Whitening",
-    description:
-      "Professional whitening consultations for a brighter-looking smile.",
-  },
+const comfortPoints = [
+  "Gentle, pain-free techniques",
+  "Clear cost explained before treatment",
+  "Sterilised instruments, every visit",
+  "Friendly for kids and nervous patients",
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#fbfcf9] text-[#243c35]">
-      {/* Header */}
+    <>
       <Header />
 
-      {/* Hero */}
-      <section className="relative flex min-h-[650px] items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=2000&q=90')",
-          }}
-        />
-        <div className="absolute inset-0 bg-[#172c25]/55" />
+      <main>
+        {/* Hero */}
+        <section className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-10 sm:px-8 md:grid-cols-2 md:gap-14 md:pb-24 md:pt-16">
+          <div>
+            <p className="inline-flex rounded-full bg-mint px-4 py-2 text-xs font-bold tracking-wide text-deep">
+              New patients welcome · Hyderabad
+            </p>
 
-        <div className="relative mx-auto w-full max-w-7xl px-6 py-28 text-white">
-          <p className="text-xs tracking-[0.35em] text-[#d7e4d4]">
-            A NEW APPROACH TO DENTAL CARE
-          </p>
+            <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] sm:text-6xl lg:text-7xl">
+              Healthy smiles,
+              <span className="text-teal"> gentle care.</span>
+            </h1>
 
-          <h1 className="mt-7 max-w-3xl font-serif text-5xl leading-tight md:text-7xl">
-            A Healthier Smile.
-            <br />A Happier You.
-          </h1>
+            <p className="mt-6 max-w-lg text-base leading-8 text-slate">
+              Modern dental care for the whole family, in a calm and friendly
+              clinic. Book online in a minute and choose a time that suits you.
+            </p>
 
-          <p className="mt-7 max-w-lg text-sm leading-8 text-white/80">
-            Thoughtful dental care in a calm, welcoming space. Discover a more
-            comfortable approach to looking after your smile.
-          </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/appointment"
+                className="rounded-full bg-deep px-8 py-4 text-center text-sm font-bold text-white transition hover:bg-teal"
+              >
+                Book Appointment
+              </Link>
+              <Link
+                href="/treatments"
+                className="rounded-full border border-deep px-8 py-4 text-center text-sm font-bold text-deep transition hover:bg-deep hover:text-white"
+              >
+                View Treatments
+              </Link>
+            </div>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#appointment"
-              className="bg-[#e3ebdf] px-8 py-4 text-xs tracking-widest text-[#29483c] transition hover:bg-white"
-            >
-              BOOK AN APPOINTMENT
-            </a>
-
-            <a
-              href="#treatments"
-              className="border border-white/60 px-8 py-4 text-xs tracking-widest text-white transition hover:bg-white hover:text-[#29483c]"
-            >
-              EXPLORE TREATMENTS
-            </a>
+            <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-slate">
+              <li>✓ Kids friendly</li>
+              <li>✓ Telugu · Hindi · English</li>
+              <li>✓ Open Mon – Sat</li>
+            </ul>
           </div>
-        </div>
-      </section>
 
-      {/* Intro */}
-      <section
-        id="about"
-        className="mx-auto grid max-w-7xl gap-14 px-6 py-24 md:grid-cols-2 md:items-center md:py-32"
-      >
-        <div>
-          <p className="text-xs tracking-[0.3em] text-[#829983]">
-            WELCOME TO EVERWELL
+          <div className="group">
+            <SoftImage
+              src="/images/dental/clinic-optimized.webp"
+              fallbackSrc={photo("photo-1606811971618-4486d14f3f99", 1000)}
+              alt="Bright, modern dental clinic"
+              emoji="🦷"
+              width={1000}
+              height={1100}
+              priority
+              className="aspect-[5/5.5] w-full rounded-[2.5rem]"
+            />
+          </div>
+        </section>
+
+        {/* How booking works */}
+        <section className="bg-mist px-5 py-16 sm:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="text-center font-display text-3xl font-semibold sm:text-4xl">
+              Book in three easy steps
+            </h2>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {steps.map((step) => (
+                <div
+                  key={step.number}
+                  className="rounded-3xl bg-white p-7 shadow-sm"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal font-display text-lg font-semibold text-white">
+                    {step.number}
+                  </span>
+                  <h3 className="mt-5 font-display text-xl font-semibold">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-slate">
+                    {step.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Treatments */}
+        <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 md:py-24">
+          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <p className="text-xs font-bold tracking-[0.25em] text-teal">
+                OUR TREATMENTS
+              </p>
+              <h2 className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
+                Care for every smile
+              </h2>
+            </div>
+            <Link
+              href="/treatments"
+              className="text-sm font-bold text-teal underline underline-offset-4"
+            >
+              All treatments →
+            </Link>
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {treatments.slice(0, 4).map((item) => (
+              <Link
+                key={item.id}
+                href={`/appointment?treatment=${encodeURIComponent(item.name)}`}
+                className="group rounded-3xl border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-teal hover:shadow-lg"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-mint text-2xl">
+                  {item.emoji}
+                </span>
+                <h3 className="mt-5 font-display text-xl font-semibold">
+                  {item.name}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate">{item.text}</p>
+                <p className="mt-4 text-sm font-bold text-deep">
+                  From {item.price}
+                </p>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-slate">
+            Sample prices for this demo.
           </p>
+        </section>
 
-          <h2 className="mt-6 font-serif text-4xl leading-tight md:text-5xl">
-            Care that puts
-            <br />
-            you at ease.
+        {/* Comfort */}
+        <section className="bg-mint px-5 py-20 sm:px-8 md:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
+            <div className="group order-2 md:order-1">
+              <SoftImage
+                src="/images/dental/treatment-optimized.webp"
+                fallbackSrc={photo("photo-1622253692010-333f2da6031d", 1000)}
+                alt="Dentist caring for a patient"
+                emoji="😁"
+                width={1000}
+                height={800}
+                className="aspect-[5/4] w-full rounded-[2rem]"
+              />
+            </div>
+
+            <div className="order-1 md:order-2">
+              <p className="text-xs font-bold tracking-[0.25em] text-teal">
+                YOUR COMFORT FIRST
+              </p>
+              <h2 className="mt-3 font-display text-4xl font-semibold leading-tight sm:text-5xl">
+                A dental visit that feels calm
+              </h2>
+              <ul className="mt-7 space-y-4">
+                {comfortPoints.map((point) => (
+                  <li key={point} className="flex gap-3 text-base">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-deep text-xs font-bold text-white">
+                      ✓
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Doctors */}
+        <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 md:py-24">
+          <p className="text-xs font-bold tracking-[0.25em] text-teal">
+            MEET THE DOCTORS
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
+            People you can trust
           </h2>
 
-          <p className="mt-7 text-sm leading-8 text-[#718078]">
-            We believe visiting the dentist should feel reassuring. Our approach
-            combines attentive care, modern dental technology and a welcoming
-            environment.
-          </p>
-
-          <a
-            href="#contact"
-            className="mt-9 inline-block border-b border-[#829983] pb-2 text-xs tracking-widest"
-          >
-            GET TO KNOW US →
-          </a>
-        </div>
-
-        <div
-          className="min-h-[390px] bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=85')",
-          }}
-        />
-      </section>
-
-      {/* Treatments */}
-      <section id="treatments" className="bg-[#eef2eb] px-6 py-24 md:py-28">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl">
-            <p className="text-xs tracking-[0.3em] text-[#829983]">
-              OUR SERVICES
-            </p>
-
-            <h2 className="mt-5 font-serif text-4xl md:text-5xl">
-              Complete care for every smile.
-            </h2>
-
-            <p className="mt-5 text-sm leading-7 text-[#718078]">
-              Explore our dental services and find the right starting point for
-              your oral health needs.
-            </p>
-          </div>
-
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {treatments.map((item) => (
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {doctors.map((doctor) => (
               <div
-                key={item.number}
-                className="border border-[#dce5d9] bg-[#fbfcf9] p-8 transition hover:-translate-y-1 hover:shadow-lg"
+                key={doctor.name}
+                className="rounded-3xl border border-line bg-white p-7"
               >
-                <span className="text-xs tracking-widest text-[#91a591]">
-                  {item.number}
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-mint font-display text-xl font-semibold text-deep">
+                  {doctor.initials}
                 </span>
-
-                <h3 className="mt-9 font-serif text-2xl">{item.title}</h3>
-
-                <p className="mt-5 text-sm leading-7 text-[#718078]">
-                  {item.description}
+                <h3 className="mt-5 font-display text-xl font-semibold">
+                  {doctor.name}
+                </h3>
+                <p className="mt-1 text-sm font-semibold text-teal">
+                  {doctor.role}
                 </p>
-
-                <a
-                  href="#appointment"
-                  className="mt-8 inline-block text-xs tracking-widest text-[#496b58]"
-                >
-                  ENQUIRE →
-                </a>
+                <p className="mt-3 text-sm leading-6 text-slate">
+                  Speaks {doctor.langs}
+                </p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Dentist */}
-      <section
-        id="dentist"
-        className="mx-auto grid max-w-7xl gap-14 px-6 py-24 md:grid-cols-2 md:items-center md:py-32"
-      >
-        <div
-          className="min-h-[440px] bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=85')",
-          }}
-        />
-
-        <div>
-          <p className="text-xs tracking-[0.3em] text-[#829983]">
-            PERSONALIZED ATTENTION
-          </p>
-
-          <h2 className="mt-6 font-serif text-4xl leading-tight md:text-5xl">
-            Your comfort
-            <br />
-            comes first.
-          </h2>
-
-          <p className="mt-7 text-sm leading-8 text-[#718078]">
-            Every smile is different. We take time to understand your concerns,
-            explain available options and help you make informed decisions about
-            your dental care.
-          </p>
-
-          <a
-            href="#appointment"
-            className="mt-9 inline-block bg-[#29483c] px-8 py-4 text-xs tracking-widest text-white transition hover:bg-[#496b58]"
+          <Link
+            href="/doctors"
+            className="mt-8 inline-block text-sm font-bold text-teal underline underline-offset-4"
           >
-            PLAN YOUR VISIT
-          </a>
-        </div>
-      </section>
+            About our doctors →
+          </Link>
+        </section>
 
-      {/* Appointment */}
-      <section
-        id="appointment"
-        className="bg-[#29483c] px-6 py-24 text-center text-white md:py-28"
-      >
-        <p className="text-xs tracking-[0.3em] text-[#c7d6c4]">
-          WE WOULD LOVE TO HEAR FROM YOU
-        </p>
-
-        <h2 className="mx-auto mt-6 max-w-2xl font-serif text-4xl leading-tight md:text-5xl">
-          Take the first step towards a healthier smile.
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-white/70">
-          Get in touch with our team to enquire about an appointment.
-        </p>
-
-        <a
-          href="#contact"
-          className="mt-9 inline-block bg-[#e3ebdf] px-9 py-4 text-xs tracking-widest text-[#29483c] transition hover:bg-white"
-        >
-          REQUEST AN APPOINTMENT
-        </a>
-      </section>
-
-      {/* Contact */}
-      <section
-        id="contact"
-        className="mx-auto grid max-w-7xl gap-12 px-6 py-24 md:grid-cols-2"
-      >
-        <div>
-          <p className="text-xs tracking-[0.3em] text-[#829983]">
-            CONTACT EVERWELL
-          </p>
-
-          <h2 className="mt-5 font-serif text-4xl md:text-5xl">
-            We are here for you.
+        {/* CTA */}
+        <section className="bg-deep px-5 py-16 text-center text-white sm:px-8">
+          <h2 className="mx-auto max-w-2xl font-display text-4xl font-semibold leading-tight sm:text-5xl">
+            Take the first step to a healthier smile
           </h2>
+          <Link
+            href="/appointment"
+            className="mt-8 inline-block rounded-full bg-white px-9 py-4 text-sm font-bold text-deep transition hover:bg-mint"
+          >
+            Book Appointment
+          </Link>
+        </section>
+      </main>
 
-          <p className="mt-6 max-w-md text-sm leading-8 text-[#718078]">
-            Have a question about our services? Reach out to our team and we
-            will be happy to help.
-          </p>
-
-          <div className="mt-10 space-y-7">
-            <div>
-              <p className="text-xs tracking-widest text-[#829983]">ADDRESS</p>
-              <p className="mt-2 text-sm">
-                Demo Clinic Address, Hyderabad, India
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs tracking-widest text-[#829983]">PHONE</p>
-              <p className="mt-2 text-sm">+91 90000 00000</p>
-            </div>
-
-            <div>
-              <p className="text-xs tracking-widest text-[#829983]">EMAIL</p>
-              <p className="mt-2 text-sm">hello@example.com</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Contact Form */}
-        <div className="border border-[#e2e9df] bg-white p-6 md:p-8">
-          <p className="mb-6 font-serif text-2xl">Send an Enquiry</p>
-
-          <ContactForm />
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-[#1d352c] px-6 py-9 text-center text-white">
-        <p className="font-serif text-xl tracking-widest">EVERWELL.</p>
-
-        <p className="mt-3 text-[10px] tracking-[0.2em] text-white/60">
-          DENTAL STUDIO · A WEBSITE DEMO BY VEBNORA
-        </p>
-
-        <p className="mt-5 text-xs text-white/50">
-          © 2026 Everwell Dental Studio. Demo website.
-        </p>
-      </footer>
-    </main>
+      <Footer />
+    </>
   );
 }
